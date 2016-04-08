@@ -4,21 +4,30 @@
 	<title>Socket Chat</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function (){
 		var socket = io.connect();
-		while(!name){
 
-			var name = prompt("Enter your name to join the chat!")
-			if(name.trim().length < 2){
-				name = prompt("Enter a valid name!")
-			};
+		var name;
+		while(!name || name.trim().length < 2){
+			name = prompt("Enter your name to join the chat! (name must be at least 2 characters long)")
 		};
+
+		socket.emit('newUser', {userName: name});
+
+		socket.on('updateUserList', function(serverData){
+				$('#userList').html('');
+				$(serverData).each(function(index){
+					$('#userList').append("<span id='users_span'>" + serverData[index].name + "</span>" + '<br>');
+				});
+		});
+		
 
 		$(document).on('submit', 'form', function(){
 			socket.emit('newMessage', {
-				msg: '<p>' + $('#newMessage').val() + '</p>' 
+				msg: '<p>' + '<b>' + name + '</b>' + ': ' + $('#newMessage').val() + ' (' + '<i>' + moment().format('MMMM Do YYYY, h:mm a') + '</i>' + ')' + '</p>' 
 			});
 			$('#newMessage').val('');
 			return false
@@ -26,7 +35,8 @@
 
 		socket.on('updateMessageBoard', function(serverData){
 			$('.message_box').append(serverData.msg);
-		})
+			$('.message_box').scrollTop($('.message_box')[0].scrollHeight);
+		});
 	});
 
 
@@ -36,7 +46,11 @@
 	<div id="wrapper">
 		<h1>Socket Chat</h1>
 		<div class="message_box"><span>Messages</span></div>
-		<div class="users_box"><span>Current Users</span></div>
+		<div class="users_box">
+			<span>Current Users</span><br>
+			<div id="userList">
+			</div>
+		</div>
 		<form>
 			<input type="text" id="newMessage" placeholder="Type Message Here">
 			<input type="submit" id="submit" value="Send!">

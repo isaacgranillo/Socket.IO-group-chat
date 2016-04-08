@@ -32,11 +32,22 @@ h1{
 	text-align: center;
 }
 
-.message_box p{
+.message_box p, #users_span{
 	text-align: center;
 	color: #5f5f5f;
 	font-family:Tahoma, Geneva, sans-serif;
-	font-size: 22px;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+#new_user{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#past_user{
+	font-weight: bold;
+	font-size: 20px;
 }
 
 .users_box{
@@ -52,7 +63,7 @@ h1{
 .message_box span, .users_box span{
 	color: #5f5f5f;
 	font-family:Tahoma, Geneva, sans-serif;
-	font-size: 27px;
+	font-size: 29px;
 	font-weight: bold;
 }
 
