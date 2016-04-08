@@ -5,40 +5,64 @@
 
 #wrapper{
 	width: 970px;
-	margin: 0px auto;
+	margin: 30px auto 0px auto;
+	background-image: url("1.jpeg");
+	background-repeat: no-repeat;
+	border: 2px solid black;
+	padding: 5px;
 }
 
 h1{
-	color: #19287b;
+	color: #5f5f5f;
 	text-align: center;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	font-family: Verdana, Geneva, sans-serif;
-	font-size: 50px;
+	font-size: 60px;
 }
+
 .message_box{
-	background-color: #82cc37;
 	width: 70%;
 	height: 500px;
 	display: inline-block;
-	border: 1px solid #19287b;
+	border: 2px solid #5f5f5f;
 	vertical-align: top;
 	overflow-y: scroll;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.message_box p{
+	text-align: center;
+	color: #5f5f5f;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size: 22px;
 }
 
 .users_box{
-	background-color: #88aaff;
 	width: 25%;
 	height: 500px;
 	display: inline-block;
-	border: 1px solid #19287b;
+	border: 2px solid #5f5f5f;
+	overflow-y: scroll;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.message_box span, .users_box span{
+	color: #5f5f5f;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size: 27px;
+	font-weight: bold;
 }
 
 #newMessage{
-	height: 60px;
+	height: 58px;
 	width: 500px;
-	border: 1px solid #19287b;
+	border: 2px solid #5f5f5f;
 	text-align: center;
+	color: #5f5f5f;
+	font-family:Tahoma, Geneva, sans-serif;
 	font-size: 18px;
 	display: inline-block;
 	vertical-align: top;
@@ -49,8 +73,10 @@ h1{
 	width: 100px;
     height: 62px;
     border: 2px solid;
+    font-family:Tahoma, Geneva, sans-serif;
     font-size: 23px;
-    color: #19287b;
-    background-color: white;
+    font-weight: bold;
+    color: #5f5f5f;
+    background-color: #cbcbcb;
     display: inline-block;
 }

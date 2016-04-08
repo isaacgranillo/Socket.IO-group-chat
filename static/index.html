@@ -9,7 +9,11 @@
 	$(document).ready(function (){
 		var socket = io.connect();
 		while(!name){
+
 			var name = prompt("Enter your name to join the chat!")
+			if(name.trim().length < 2){
+				name = prompt("Enter a valid name!")
+			};
 		};
 
 		$(document).on('submit', 'form', function(){
@@ -31,8 +35,8 @@
 <body>
 	<div id="wrapper">
 		<h1>Socket Chat</h1>
-		<div class="message_box"></div>
-		<div class="users_box"></div>
+		<div class="message_box"><span>Messages</span></div>
+		<div class="users_box"><span>Current Users</span></div>
 		<form>
 			<input type="text" id="newMessage" placeholder="Type Message Here">
 			<input type="submit" id="submit" value="Send!">
