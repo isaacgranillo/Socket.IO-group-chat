@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Socket Chat</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function (){
+		var socket = io.connect();
+		while(!name){
+			var name = prompt("Enter your name to join the chat!")
+		};
+
+		$(document).on('submit', 'form', function(){
+			socket.emit('newMessage', {
+				msg: '<p>' + $('#newMessage').val() + '</p>' 
+			});
+			$('#newMessage').val('');
+			return false
+		});
+
+		socket.on('updateMessageBoard', function(serverData){
+			$('.message_box').append(serverData.msg);
+		})
+	});
+
+
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Socket Chat</h1>
+		<div class="message_box"></div>
+		<div class="users_box"></div>
+		<form>
+			<input type="text" id="newMessage" placeholder="Type Message Here">
+			<input type="submit" id="submit" value="Send!">
+		</form>
+	</div> <!--end of wrapper -->
+</body>
+</html>
