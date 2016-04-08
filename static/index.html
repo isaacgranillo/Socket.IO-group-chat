@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Socket Chat</title>
+	<title>Socket Group Chat</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="moment.js"></script>
@@ -12,7 +12,7 @@
 
 		var name;
 		while(!name || name.trim().length < 2){
-			name = prompt("Enter your name to join the chat! (name must be at least 2 characters long)")
+			name = prompt("ENTER YOUR NAME TO JOIN CHAT! (name must be at least 2 characters long and you won't be able to join the chat until valid name is given; if you close dialogue box please close this window and open another one)")
 		};
 
 		socket.emit('newUser', {userName: name});
@@ -44,7 +44,7 @@
 </head>
 <body>
 	<div id="wrapper">
-		<h1>Socket Chat</h1>
+		<h1>Socket Group Chat</h1>
 		<div class="message_box"><span>Messages</span></div>
 		<div class="users_box">
 			<span>Current Users</span><br>
