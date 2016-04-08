@@ -12,7 +12,7 @@
 
 		var name;
 		while(!name || name.trim().length < 2){
-			name = prompt("ENTER YOUR NAME TO JOIN CHAT! (name must be at least 2 characters long and you won't be able to join the chat until valid name is given; if you close dialogue box please close this window and open another one)")
+			name = prompt("ENTER YOUR NAME TO CHAT! (name must be at least 2 characters long and you won't be able to join the chat until valid name is given; if you close dialogue box please close this window and open another one)")
 		};
 
 		socket.emit('newUser', {userName: name});
